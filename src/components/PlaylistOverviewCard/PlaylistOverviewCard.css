@@ -1,0 +1,28 @@
+.PlaylistOverviewCard {
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.poc-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.poc-header h2{
+    margin: 0;
+}
+
+.poc-videos-container{
+    padding-top: 0.5rem;
+    /* height: 240px; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px 210px 210px 210px 210px;
+    column-gap: 0.5rem;
+    overflow-x: auto;
+}

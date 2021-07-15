@@ -1,0 +1,68 @@
+.VideoMiniCard{
+    max-width: 210px;
+    max-height: 210px;
+    width: 100%;
+    height: auto;
+    box-shadow:  0.3rem 0.3rem 0.5rem var(--color-grey-bg);
+    margin: 0.2rem;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.VideoMiniCard .card-img-container {
+    max-width: 210px;
+    max-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	overflow: hidden;
+    box-shadow:  0.3rem 0.3rem 0.5rem var(--color-grey-bg);
+}
+
+.VideoMiniCard .responsive-img {
+	width: 100%;
+	height: 100%;
+    object-fit: contain;
+}
+
+.VideoMiniCard-description{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.7rem;
+}
+
+.VideoMiniCard-description h3{
+    margin: 0;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.VideoMiniCard .description-details{
+    display: flex;
+    width: 100%;
+    font-weight: 500;
+    justify-content: space-between;
+}
+
+.VideoMiniCard .description-next{
+    font-size: 0.7rem;
+}
+
+@media only screen and (max-width: 500px) {
+	.VideoMiniCard-description h3{
+        font-size: 1rem;
+    }
+    .VideoMiniCard{
+        max-width: 140;
+        width: 95%;
+        margin: 0.2rem;
+    }
+    .VideoMiniCard .card-img-container {
+        max-width: 140;
+        max-height: 90;
+        overflow: hidden;
+        box-shadow:  0.3rem 0.3rem 0.5rem var(--color-grey-bg);
+    }
+
+}

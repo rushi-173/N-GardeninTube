@@ -1,0 +1,62 @@
+.VideoCard{
+    max-width: 280px;
+    max-height: 280px;
+    width: 100%;
+    box-shadow:  0.3rem 0.3rem 0.5rem var(--color-grey-bg);
+    margin: 0.2rem;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.card-img-container {
+    max-width: 280;
+    max-height: 210;
+	overflow: hidden;
+    box-shadow:  0.3rem 0.3rem 0.5rem var(--color-grey-bg);
+}
+
+.responsive-img {
+    object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.Videocard-description{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+}
+
+.Videocard-description h3{
+    margin: 0;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.description-details{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.description-details .btn-details{
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 500px) {
+	.Videocard-description h3{
+        font-size: 1rem;
+    }
+    .description-next{
+        font-size: 0.8rem;
+    }
+    .VideoCard{
+        max-width: 95%;
+        width: 95%;
+        margin: 0.2rem;
+    }
+
+}
