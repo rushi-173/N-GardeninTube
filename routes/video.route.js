@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+require('dotenv/config');
 const axios = require('axios');
 
 
@@ -22,7 +22,7 @@ const db = [
 
 let myData = []
 
-const apikey = "AIzaSyCOz1G_vL179HbI1zsomialF33ojuxGeho";
+const apikey = process.env.API_KEY;
 
 async function getVideoDetails(vid) {
   const data = await axios.get(
