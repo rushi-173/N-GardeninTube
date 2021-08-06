@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 const addToPlaylist = (state, videoId, playlistId) => {
-	console.log("adding", playlistId, videoId);
+	//console.log("adding", playlistId, videoId);
 	return {
 		...state,
 		playlists: state.playlists.map((playlistItem) => {
@@ -16,7 +16,7 @@ const addToPlaylist = (state, videoId, playlistId) => {
 };
 
 const removeFromPlaylist = (state, videoId, playlistId) => {
-	console.log("deleting", playlistId, videoId);
+	//console.log("deleting", playlistId, videoId);
 	return {
 		...state,
 		playlists: state.playlists.map((playlistItem) => {
@@ -32,10 +32,8 @@ const removeFromPlaylist = (state, videoId, playlistId) => {
 	};
 };
 
-
-
 export const reducerFunc = (state, { type, payload }) => {
-	console.log("callink", payload);
+	//console.log("callink", payload);
 
 	switch (type) {
 		case "INITIALIZE_VIDEOS":
@@ -52,6 +50,7 @@ export const reducerFunc = (state, { type, payload }) => {
 			return isInPlaylist
 				? removeFromPlaylist(state, payload.videoId, payload.playlistId)
 				: addToPlaylist(state, payload.videoId, payload.playlistId);
+
 		case "CREATE_PLAYLIST":
 			return {
 				...state,
@@ -103,10 +102,8 @@ export const initialState = {
 			videos: [],
 			isDefault: true,
 		},
-		
-	]
+	],
 };
-
 
 export const toggleInPlaylist = (state, payload) => {
 	const currentPlaylist = state.playlists.find(
@@ -118,7 +115,8 @@ export const toggleInPlaylist = (state, payload) => {
 	return isInPlaylist
 		? removeFromPlaylist(state, payload.videoId, payload.playlistId)
 		: addToPlaylist(state, payload.videoId, payload.playlistId);
-}
+};
+
 
 
 export const createPlaylist = (state, payload) => {
@@ -133,14 +131,13 @@ export const createPlaylist = (state, payload) => {
 			},
 		],
 	};
-}
+};
 
-export const deletePlaylist = (state, payload) =>{
+export const deletePlaylist = (state, payload) => {
 	return {
 		...state,
 		playlists: state.playlists.filter(
 			(playlistItem) => playlistItem.id !== payload.playlistId
 		),
 	};
-}
-
+};

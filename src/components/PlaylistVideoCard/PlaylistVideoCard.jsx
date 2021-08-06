@@ -8,7 +8,7 @@ import { useAuth } from "../../contexts/auth-context";
 export function PlaylistVideoCard({ video, pid }) {
 	const { dispatch, toggleInPlaylist, state } = useData();
 	const [showModal, setShowModal] = useState("none");
-	console.log("video", video);
+	//console.log("video", video);
 	const {auth} = useAuth();
 	const toggleInPlaylists = async (playlistId) => {
 		if(auth){
@@ -31,7 +31,7 @@ export function PlaylistVideoCard({ video, pid }) {
 					payload: { videoId: video.id, playlistId: playlistId },
 				});
 			} catch (err) {
-				console.log(err);
+				//console.log(err);
 			}
 		}
 	};

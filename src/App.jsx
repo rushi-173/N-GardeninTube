@@ -14,10 +14,10 @@ function App() {
 			const response = await axios.get(
 				"https://VideoLibBack-1.rushi173.repl.co/video"
 			);
-			console.log();
+			//console.log();
 			dispatch({ type: "INITIALIZE_VIDEOS", payload: response.data.data });
 		} catch (error) {
-			console.log(error);
+			//console.log(error);
 		}
 	};
 	const { auth } = useAuth();

@@ -8,18 +8,18 @@ import axios from "axios";
 import { useAuth } from "../../contexts/auth-context";
 
 export function VideoDetails() {
-	const { videos, dispatch, playlists, toggleInPlaylist, state } = useData();
+	const { videos, dispatch, playlists, toggleInPlaylist, createPlaylist, state } = useData();
 
 	const [currentPlaylistInput, setCurrentPlaylistInput] = useState("");
 	const [showPlaylistMenu, setShowPlaylistMenu] = useState(false);
 
 	let { id } = useParams();
-	console.log(videos);
+	//console.log(videos);
 	let video = videos.find((video) => video.id === id);
 	if (!video) {
 		video = { title: "", description: "" };
 	}
-	console.log(id, video);
+	//console.log(id, video);
 	// const id = "jD8n2CKEWtA";
 	const url = `https://www.youtube.com/watch?v=${id}`;
 	const { auth } = useAuth();
@@ -39,24 +39,24 @@ export function VideoDetails() {
 					},
 				}
 			);
-			console.log("data ",res)
+			//console.log("data ",res)
 
 			dispatch({
 				type: "TOGGLE_IN_PLAYLISTS",
 				payload: { videoId: id, playlistId: playlistId },
 			});
 		} catch (err) {
-			console.log(err);
+			//console.log(err);
 		}
 	}
 		
 	};
-	console.log(playlists);
+	//console.log(playlists);
 	const togglePlaylistMenu = () => {
 		setShowPlaylistMenu((prev) => (prev === true ? false : true));
-		console.log("calling tog 2");
+		//console.log("calling tog 2");
 	};
-	console.log(showPlaylistMenu);
+	//console.log(showPlaylistMenu);
 
 	const getPlaylistById = (id) =>
 		playlists.filter((playlistItem) => playlistItem.id === id)?.[0];
@@ -69,8 +69,9 @@ export function VideoDetails() {
 		return playlist?.videos.find((videoItem) => videoItem === video.id);
 	};
 
-	const createPlaylist = async (e) => {
-		e.preventDefault();
+	const createPlaylistAndAdd = async (event) => {
+		//console.log(video)
+		event.preventDefault();
 		setCurrentPlaylistInput("");
 		if(currentPlaylistInput && !getPlaylistByName(currentPlaylistInput) ){
 			if(auth){
@@ -90,23 +91,27 @@ export function VideoDetails() {
 		
 					dispatch({
 						type: "CREATE_PLAYLIST",
-						payload: { playlistName: currentPlaylistInput, videoId: video.id },
+						payload: { playlistName: currentPlaylistInput, videoId: id },
 					});
 				} catch (err) {
-					console.log(err);
+					//console.log(err);
 				}
 			}
 			
 		}
 	};
 
-	// useEffect(() => {
-		// if (!isInPlaylists("history", id)) {
-		// 	toggleInPlaylists("history");
-		// }
+	useEffect(() => {
+		if (!isInPlaylists("history", id)) {
+			toggleInPlaylists("history");
+		}else{
+			toggleInPlaylists("history");
+			toggleInPlaylists("history");
+
+		}
 		
-	// }, [id]);
-	// console.log(playlists);
+	}, [id]);
+	// //console.log(playlists);
 
 	return (
 		<div className="VideoDetails">
@@ -225,26 +230,25 @@ export function VideoDetails() {
 												return null;
 											})}
 										<li className="container-center">
-											<form
-												onSubmit={(e) => createPlaylist(e)}
+											<div
 												className="playlist-form"
 											>
 												<input
 													className="playlist-input"
 													value={currentPlaylistInput}
 													onChange={(e) =>
-														setCurrentPlaylistInput(() => e.target.value)
+														setCurrentPlaylistInput((prev) => e.target.value)
 													}
 													type="search"
 												/>
-												<button className="btn btn-primary btn-add-playlist">
+												<button className="btn btn-primary btn-add-playlist" onClick={(e)=>{createPlaylistAndAdd(e)}}>
 													<i
 														className="fa fa-plus-square add-play-icon"
 														aria-hidden="true"
 														style={{ color: "white" }}
 													></i>
 												</button>
-											</form>
+											</div>
 										</li>
 										<li>
 											<button

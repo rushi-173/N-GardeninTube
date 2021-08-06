@@ -2,7 +2,7 @@ import "./VideoMiniCard.css";
 import {Link} from "react-router-dom";
 
 export function VideoMiniCard({ video }) {
-	console.log("video", video);
+	//console.log("video", video);
 	return (
 		<div className="VideoMiniCard ">
 			<div className="card-img-container">

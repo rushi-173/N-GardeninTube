@@ -5,7 +5,7 @@ import { useData } from "../../contexts/data-context";
 export function Home() {
 	const { videos } = useData();
 
-	console.log(videos);
+	//console.log(videos);
 	return (
 		<div className="Home container-column">
 			<div className="top-submenu"></div>

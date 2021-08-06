@@ -16,7 +16,7 @@ export function DataProvider({ children }) {
 
 
 	return (
-		<DataContext.Provider value={{ videos: state.videos, dispatch,state: state, playlists: state.playlists,  toggleInPlaylist, deletePlaylist, createPlaylist  }}>
+		<DataContext.Provider value={{ videos: state.videos, dispatch,state: state, playlists: state.playlists,  toggleInPlaylist, deletePlaylist, createPlaylist }}>
 			{children}
 		</DataContext.Provider>
 	);

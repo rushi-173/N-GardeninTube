@@ -5,9 +5,10 @@ import { useAuth } from "../../contexts/auth-context";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import {   useNavigate } from "react-router-dom";
+import { useToasts } from 'react-toast-notifications';
 
 export function Login() {
-  // const { showToast } = useToast();
+  const { addToast } = useToasts();
   const [isLoading, setIsLoading] = useState(false);
   const { auth, setAuth } = useAuth();
   const [error, setError] = useState("");
@@ -15,7 +16,6 @@ export function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const params = useLocation();
-
   useEffect(() => {
     if(auth){
       navigate("/")
@@ -33,12 +33,12 @@ export function Login() {
           password: password
         }
       );
-      console.log(res);
+      //console.log(res);
       setIsLoading(false);
       if (!res.data.token) {
         setError(res.data);
       } else {
-        // showToast("Login Successful","Let's Explore the Shop!", "success");
+        addToast("Login Successful! Let's Explore the App!", {appearance: 'success'});
         setAuth(res.data);
         setAuth((prev) => {
           localStorage.setItem("gtube-auth", JSON.stringify(prev));
@@ -54,7 +54,8 @@ export function Login() {
       }
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
+      addToast("err",{appearance: 'error'});
+      //console.log(err);
     }
   }
 
@@ -95,16 +96,40 @@ export function Login() {
               "Login"
             )}
           </button>
-          <small className="err-msg">{error}</small>
-          <div className="container-space-between btn-login">
+          <button className="btn btn-secondary btn-login" onClick={(e)=>{
+            e.preventDefault()
+            setEmail("test@test.com")
+            setPassword("test123")
+          }} disabled={isLoading}>
+            
+              Use Test Credentials
+          </button>
+
+          <small className="err-msg" style={{color:"red"}}>{error}</small><br/>
+          <div className="container-center btn-login">
+           
             <Link to="/signup">
               <p>Register Now 🚀</p>
             </Link>
-            <p>🤔 Forgot Password?</p>
           </div>
           <hr color="white" width="100%" className="btn-login" />
-          <br />
-          
+          {/* <br />
+          <p>
+            <u>Or Login With</u>
+          </p>
+          <div className="container-space-between social-login btn-login">
+            <button class="btn btn-facebook" disabled>
+              Facebook
+              <i class="fa fa-facebook icon-right" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-twitter" disabled>
+              Twitter<i class="fa fa-twitter icon-right" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-google" disabled>
+              Google
+              <i class="fa fa-google-plus icon-right" aria-hidden="true"></i>
+            </button>
+          </div> */}
         </form>
       </div>
     </div>

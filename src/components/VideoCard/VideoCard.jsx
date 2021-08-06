@@ -1,8 +1,9 @@
 import "./VideoCard.css";
 import {Link} from "react-router-dom";
+import { getDate } from './../../utils/getDate';
 
 export function VideoCard({ video }) {
-	console.log("video", video);
+	//console.log("video", video);
 	return (
 		<div className="VideoCard container-column">
             
@@ -17,15 +18,11 @@ export function VideoCard({ video }) {
 				<div className="description-details">
 					<h3 style={{ wordBreak: "break-all" }}>
 						{video.title.slice(0, 55)}...
-					</h3>{" "}
-					&nbsp;  &nbsp;
-					<button className="btn-details">
-						<i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-					</button>
+					</h3>
 				</div>
 				<div className="description-next">
 					<p>{video.channelInfo.title}</p>
-					<p>{video.statistics.likeCount} likes . upload date</p>
+					<p>{video.statistics.likeCount} likes . {getDate(video.publishedAt)}</p>
 				</div>
 			</div>
 		</div>
