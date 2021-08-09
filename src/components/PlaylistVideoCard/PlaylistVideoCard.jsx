@@ -66,7 +66,7 @@ export function PlaylistVideoCard({ video, pid }) {
 				</div>
 				<div className="description-next">
 					<p>{video.channelInfo.title}</p>
-					<p>{video.statistics.likeCount} likes . getDate(video.publishedAt)</p>
+					<p>{video.statistics.likeCount} likes . {getDate(video.publishedAt)}</p>
 				</div>
 			</div>
 			<div

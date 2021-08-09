@@ -12,7 +12,9 @@ ReactDOM.render(
 		<Router>
 			<AuthProvider>
 			<DataProvider>
-				<ToastProvider>
+				<ToastProvider autoDismiss
+    autoDismissTimeout={3000}
+    placement="bottom-left">
 				<App />
 				</ToastProvider>
 			</DataProvider>
