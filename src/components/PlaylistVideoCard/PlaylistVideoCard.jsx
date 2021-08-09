@@ -4,6 +4,7 @@ import { useData } from "../../contexts/data-context";
 import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/auth-context";
+import { getDate } from './../../utils/getDate';
 
 export function PlaylistVideoCard({ video, pid }) {
 	const { dispatch, toggleInPlaylist, state } = useData();
@@ -65,7 +66,7 @@ export function PlaylistVideoCard({ video, pid }) {
 				</div>
 				<div className="description-next">
 					<p>{video.channelInfo.title}</p>
-					<p>{video.statistics.likeCount} likes . upload date</p>
+					<p>{video.statistics.likeCount} likes . getDate(video.publishedAt)</p>
 				</div>
 			</div>
 			<div
